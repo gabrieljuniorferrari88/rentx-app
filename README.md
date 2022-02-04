@@ -9,28 +9,28 @@
 <h1 align="center">Rentx</h1>
 
 <p align="center">
-  <img alt="Principal linguagem do projeto" src="https://img.shields.io/github/languages/top/gabrieljuniorferrari88/rentx?color=56BEB8">
+  <img alt="Principal linguagem do projeto" src="https://img.shields.io/github/languages/top/gabrieljuniorferrari88/rentx-app?color=56BEB8">
 
-  <img alt="Quantidade de linguagens utilizadas" src="https://img.shields.io/github/languages/count/gabrieljuniorferrari88/rentx?color=56BEB8">
+  <img alt="Quantidade de linguagens utilizadas" src="https://img.shields.io/github/languages/count/gabrieljuniorferrari88/rentx-app?color=56BEB8">
 
-  <img alt="Tamanho do repositório" src="https://img.shields.io/github/repo-size/gabrieljuniorferrari88/rentx?color=56BEB8">
+  <img alt="Tamanho do repositório" src="https://img.shields.io/github/repo-size/gabrieljuniorferrari88/rentx-app?color=56BEB8">
 
-  <img alt="Licença" src="https://img.shields.io/github/license/gabrieljuniorferrari88/rentx?color=56BEB8">
+  <img alt="Licença" src="https://img.shields.io/github/license/gabrieljuniorferrari88/rentx-app?color=56BEB8">
 
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/gabrieljuniorferrari88/rentx?color=56BEB8" /> -->
+  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/gabrieljuniorferrari88/rentx-app?color=56BEB8" /> -->
 
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/gabrieljuniorferrari88/rentx?color=56BEB8" /> -->
+  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/gabrieljuniorferrari88/rentx-app?color=56BEB8" /> -->
 
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/gabrieljuniorferrari88/rentx?color=56BEB8" /> -->
+  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/gabrieljuniorferrari88/rentx-app?color=56BEB8" /> -->
 </p>
 
-<!-- Status -->
+Status
 
-<!-- <h4 align="center"> 
+ <h4 align="center"> 
 	🚧  Rentx 🚀 Em construção...  🚧
 </h4> 
 
-<hr> -->
+<hr>
 
 <p align="center">
   <a href="#dart-sobre">Sobre</a> &#xa0; | &#xa0; 
@@ -72,10 +72,10 @@ Antes de começar :checkered_flag:, você precisa ter o [Git](https://git-scm.co
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/gabrieljuniorferrari88/rentx
+$ git clone https://github.com/gabrieljuniorferrari88/rentx-app
 
 # Entre na pasta
-$ cd rentx
+$ cd rentx-app
 
 # Instale as dependências
 $ yarn
