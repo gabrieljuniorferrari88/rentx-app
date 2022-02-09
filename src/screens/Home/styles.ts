@@ -10,7 +10,7 @@ background-color: ${({ theme }) => theme.colors.background_primary};
 
 export const Header = styled.View`
 	width: 100%;
-	height: 113px;	
+	height: ${RFValue(113)}px;
 	background-color: ${({ theme }) => theme.colors.header};
 	justify-content: flex-end;
 	padding: 32px 24px;

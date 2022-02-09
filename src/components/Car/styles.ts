@@ -58,6 +58,6 @@ export const Price = styled.Text`
 export const Type = styled.View``;
 
 export const CarImage = styled.Image`
-	width: 167px;
-	height: 85px;
+	width: ${RFValue(167)}px;
+	height: ${RFValue(85)}px;
 `;
