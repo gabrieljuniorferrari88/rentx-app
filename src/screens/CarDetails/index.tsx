@@ -3,6 +3,7 @@ import React from 'react';
 import { Accessory } from '../../components/Accessory';
 import { BackButton } from '../../components/BackButton'
 import { ImageSlider } from '../../components/ImageSlider';
+import { Button } from '../../components/Button';
 
 import SpeedSvg from '../../assets/speed.svg';
 import AccelerationSvg from '../../assets/acceleration.svg';
@@ -24,7 +25,8 @@ import {
 	Period,
 	Price,
 	About,
-	Accessories
+	Accessories,
+	Footer
 } from './styles';
 
 export function CarDetails(){
@@ -70,6 +72,10 @@ export function CarDetails(){
 						A tração é traseira e a velocidade máxima é de 340 km/h. Pronto!
 					</About>
 			</Content>
+
+			<Footer>
+				<Button title="Confirmar"/>
+			</Footer>
 
 		</Container>
 	);
