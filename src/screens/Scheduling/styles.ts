@@ -23,11 +23,27 @@ export const Title = styled.Text`
 	margin-top: 24px;
 `;
 
-export const RentalPeriod = styled.View``;
+export const RentalPeriod = styled.View`
+ width: 100%;
 
-export const DateInfo = styled.View``;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+`;
 
-export const DateTitle = styled.Text``;
+export const DateInfo = styled.View`
+	width: 30%;
+`;
 
-export const DateValue = styled.Text``;
+export const DateTitle = styled.Text`
+	color: ${({theme}) => theme.colors.text};
+	font-family: ${({theme}) => theme.fonts.secondary_500};
+	font-size: ${RFValue(10)}px;
+`;
+
+export const DateValue = styled.Text`
+	color: ${({theme}) => theme.colors.shape};
+	font-family: ${({theme}) => theme.fonts.primary_500};
+	font-size: ${RFValue(15)}px;
+`;
 
