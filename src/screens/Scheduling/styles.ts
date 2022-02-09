@@ -22,3 +22,12 @@ export const Title = styled.Text`
 
 	margin-top: 24px;
 `;
+
+export const RentalPeriod = styled.View``;
+
+export const DateInfo = styled.View``;
+
+export const DateTitle = styled.Text``;
+
+export const DateValue = styled.Text``;
+

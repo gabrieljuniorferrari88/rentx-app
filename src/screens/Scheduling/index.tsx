@@ -3,10 +3,16 @@ import { useTheme } from 'styled-components/native';
 
 import { BackButton } from '../../components/BackButton';
 
+import ArrowSvg from '../../assets/arrow.svg';
+
 import {
 	Container,
 	Header,
 	Title,
+	RentalPeriod,
+	DateInfo,
+	DateTitle,
+	DateValue,
 } from './styles';
 
 export function Scheduling(){
@@ -24,6 +30,22 @@ export function Scheduling(){
 					data de início e{'\n'}
 					fim do aluguel
 				</Title>
+
+				<RentalPeriod>
+					<DateInfo>
+						<DateTitle>DE</DateTitle>
+						<DateValue />
+					</DateInfo>
+
+					<ArrowSvg />
+
+					<DateInfo>
+						<DateTitle>ATÉ</DateTitle>
+						<DateValue />
+					</DateInfo>
+
+				</RentalPeriod>
+
 			</Header>
 		</Container>
 	);
