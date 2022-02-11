@@ -117,7 +117,7 @@ export function SchedulingDetails(){
 			</Content>
 
 			<Footer>
-				<Button title="Confirmar"/>
+				<Button title="Alugar agora" color={theme.colors.success}/>
 			</Footer>
 
 		</Container>
