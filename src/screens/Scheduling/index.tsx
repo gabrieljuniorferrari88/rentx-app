@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { useTheme } from 'styled-components/native';
 
 import { BackButton } from '../../components/BackButton';
@@ -20,6 +21,11 @@ export function Scheduling(){
 	return (
 		<Container>
 			<Header>
+				<StatusBar 
+					barStyle='light-content'
+					translucent
+					backgroundColor='transparent'					
+				/>
 				<BackButton 
 					onPress={() => {}}
 					color={theme.colors.shape}
@@ -34,14 +40,14 @@ export function Scheduling(){
 				<RentalPeriod>
 					<DateInfo>
 						<DateTitle>DE</DateTitle>
-						<DateValue />
+						<DateValue selected={false}>11/02/2022</DateValue>
 					</DateInfo>
 
 					<ArrowSvg />
 
 					<DateInfo>
 						<DateTitle>ATÉ</DateTitle>
-						<DateValue />
+						<DateValue selected={false}>12/02/2022</DateValue>
 					</DateInfo>
 
 				</RentalPeriod>
