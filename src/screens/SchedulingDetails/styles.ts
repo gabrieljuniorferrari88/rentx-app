@@ -122,6 +122,16 @@ export const DateValue = styled.Text`
 	color: ${({ theme }) => theme.colors.title};
 `;
 
+export const RentalPrice = styled.View``;
+
+export const RentalPriceLabel = styled.Text``;
+
+export const RentalPriceDetails = styled.View``;
+
+export const RentalPriceQuota = styled.Text``;
+
+export const RentalPriceTotal = styled.Text``;
+
 
 export const Footer = styled.View`
 	width: 100%;

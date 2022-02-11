@@ -33,6 +33,11 @@ import {
 	DateInfo,
 	DateTitle,
 	DateValue,
+	RentalPrice,
+	RentalPriceLabel,
+	RentalPriceDetails,
+	RentalPriceQuota,
+	RentalPriceTotal,
 	Footer
 } from './styles';
 
@@ -100,6 +105,14 @@ export function SchedulingDetails(){
 					</DateInfo>
 
 				</RentalPeriod>
+
+				<RentalPrice>
+					<RentalPriceLabel>TOTAL</RentalPriceLabel>
+					<RentalPriceDetails>
+						<RentalPriceQuota>R$ 580 x3 diárias</RentalPriceQuota>
+						<RentalPriceTotal>R$ 2.900</RentalPriceTotal>
+					</RentalPriceDetails>
+				</RentalPrice>
 				
 			</Content>
 
