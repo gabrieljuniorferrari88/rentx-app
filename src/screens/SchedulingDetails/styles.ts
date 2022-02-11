@@ -74,17 +74,6 @@ export const Price = styled.Text`
 	color: ${({ theme }) => theme.colors.main};
 `;
 
-export const About = styled.Text`
-	font-size: ${RFValue(15)}px;
-	line-height: ${RFValue(25)}px;
-	font-family: ${({ theme }) => theme.fonts.primary_400};
-	text-align: justify;
-
-	color: ${({ theme }) => theme.colors.text};
-
-	margin-top: 23px;
-`;
-
 export const Accessories = styled.View`
 	width: 100%;
 
@@ -95,6 +84,44 @@ export const Accessories = styled.View`
 
 	margin-top: 16px;
 `;
+
+export const RentalPeriod = styled.View`
+	width: 100%;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	border-bottom-width: ${RFValue(0.5)}px;
+	border-bottom-color: ${({theme}) => theme.colors.line};
+	padding-bottom: 16px;
+
+	margin-top: ${RFValue(40)}px;
+`;
+
+export const CalendarIcon = styled.View`
+	width: ${RFValue(48)}px;
+	height: ${RFValue(48)}px;
+	background-color: ${({theme}) => theme.colors.main};
+
+	justify-content: center;
+	align-items: center;
+`;
+
+export const DateInfo = styled.View``;
+
+export const DateTitle = styled.Text`
+	font-size: ${RFValue(10)}px;
+	font-family: ${({ theme }) => theme.fonts.primary_500};
+	color: ${({ theme }) => theme.colors.text_detail};
+	text-transform: uppercase;
+`;
+
+export const DateValue = styled.Text`
+	font-size: ${RFValue(15)}px;
+	font-family: ${({ theme }) => theme.fonts.primary_500};
+	color: ${({ theme }) => theme.colors.title};
+`;
+
 
 export const Footer = styled.View`
 	width: 100%;

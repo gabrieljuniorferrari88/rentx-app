@@ -28,6 +28,11 @@ import {
 	Period,
 	Price,
 	Accessories,
+	RentalPeriod,
+	CalendarIcon,
+	DateInfo,
+	DateTitle,
+	DateValue,
 	Footer
 } from './styles';
 
