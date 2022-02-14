@@ -4,12 +4,14 @@ import { useWindowDimensions } from 'react-native';
 
 import LogoSvg from '../../assets/logo_background_gray.svg';
 import DoneSvg from '../../assets/done.svg';
+import { ConfirmButton } from '../../components/ConfirmButton/index';
 
 import {
 	Container,
 	Content,
 	Title,
 	Message,
+	Footer
 } from './styles';
 
 export function SchedulingComplete(){
@@ -28,6 +30,10 @@ export function SchedulingComplete(){
 					até a concessionaria da RENTEX {'\n'}
 					pegar o seu automóvel
 				</Message>
+
+				<Footer>
+					<ConfirmButton title='Ok'/>
+				</Footer>
 			</Content>
 
 		</Container>
