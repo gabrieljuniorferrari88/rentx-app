@@ -23,18 +23,8 @@ export function Home(){
 	const [loading, setLoading] = useState(true);
 	const navigation = useNavigation();
 
-	const carData ={
-		brand: 'porshe',
-		name: 'panamera',
-		rent: {
-			period: 'Ao Dia',
-			price: 340
-		},
-		thumbnail: 'https://www.pngplay.com/wp-content/uploads/12/Porsche-No-Background-Clip-Art.png',
-	}
-
-	function handleCarDetails() {
-    navigation.navigate('CarDetails');
+	function handleCarDetails(car: CarDTO) {
+    navigation.navigate('CarDetails', { car });
   }
 	
 	useEffect(() => {
@@ -74,7 +64,7 @@ export function Home(){
 						data={cars}
 						keyExtractor={item => String(item.id)} 
 						renderItem={({ item }) => 
-							<Car data={item} onPress={handleCarDetails} />
+							<Car data={item} onPress={() => handleCarDetails(item)} />
 					}
 				/>
 				}

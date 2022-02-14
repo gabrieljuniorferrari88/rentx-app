@@ -5,7 +5,7 @@ import { BackButton } from '../../components/BackButton'
 import { ImageSlider } from '../../components/ImageSlider';
 import { Button } from '../../components/Button';
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import SpeedSvg from '../../assets/speed.svg';
 import AccelerationSvg from '../../assets/acceleration.svg';
@@ -13,6 +13,7 @@ import ForceSvg from '../../assets/force.svg';
 import GasolineSvg from '../../assets/gasoline.svg';
 import ExchangeSvg from '../../assets/exchange.svg';
 import PeopleSvg from '../../assets/people.svg';
+import { CarDTO } from '../../dtos/CarDTO';
 
 import {
 	Container,
@@ -31,8 +32,14 @@ import {
 	Footer
 } from './styles';
 
+interface Params {
+	car: CarDTO;
+}
+
 export function CarDetails(){
 	const navigation = useNavigation();
+	const route = useRoute();
+	const { car } = route.params as Params;
 
 	function handleConfirmRental() {
 		navigation.navigate('Scheduling');
@@ -56,33 +63,22 @@ export function CarDetails(){
 				<Details>					
 					<Description>
 
-						<Brand>Ferrari</Brand>
-						<Name>812 GTS</Name>
+						<Brand>{car.brand}</Brand>
+						<Name>{car.name}</Name>
 					</Description>
 
 					<Rent>
-						<Period>Ao dia</Period>
-						<Price>R$ 580</Price>
+						<Period>{car.rent.period}</Period>
+						<Price>R$ {car.rent.price}</Price>
 					</Rent>
 
 				</Details>
 
 				<Accessories>
-					<Accessory name="300km/h" icon={SpeedSvg} />
-					<Accessory name="3.2s" icon={AccelerationSvg} />
-					<Accessory name="800 HP" icon={ForceSvg} />
-					<Accessory name="Gasolina" icon={GasolineSvg} />
-					<Accessory name="Auto" icon={ExchangeSvg} />
-					<Accessory name="2 pessoas" icon={PeopleSvg} />
+					<Accessory name={car.name} icon={SpeedSvg} />
 				</Accessories>
 
-					<About>
-						O conversível mais potente do mundo, a nova 812 GTS. Já que o foco
-						é desempenho, eu não vou te enrolar. Vamos aos números: o motor é um 6.5 V12 
-						aspirado de 800 cv de potência e 73,2 kgfm de torque. O câmbio automático de 
-						dupla embreagem tem sete marchas e o 0 a 100 km/h é feito em apenas 3 segundos.
-						A tração é traseira e a velocidade máxima é de 340 km/h. Pronto!
-					</About>
+					<About>{car.about}</About>
 			</Content>
 
 			<Footer>
