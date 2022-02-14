@@ -8,11 +8,6 @@ import { Button } from '../../components/Button';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 import SpeedSvg from '../../assets/speed.svg';
-import AccelerationSvg from '../../assets/acceleration.svg';
-import ForceSvg from '../../assets/force.svg';
-import GasolineSvg from '../../assets/gasoline.svg';
-import ExchangeSvg from '../../assets/exchange.svg';
-import PeopleSvg from '../../assets/people.svg';
 import { CarDTO } from '../../dtos/CarDTO';
 
 import {
@@ -56,7 +51,7 @@ export function CarDetails(){
 			</Header>
 
 			<CarImages>
-				<ImageSlider imagesUrl={['https://www.pngplay.com/wp-content/uploads/12/Porsche-No-Background-Clip-Art.png']} />
+				<ImageSlider imagesUrl={car.photos} />
 			</CarImages>
 
 			<Content>
@@ -75,7 +70,15 @@ export function CarDetails(){
 				</Details>
 
 				<Accessories>
-					<Accessory name={car.name} icon={SpeedSvg} />
+					{
+						car.accessories.map(accessory => (
+							<Accessory 
+								key={accessory.type}
+								name={accessory.name} 
+								icon={SpeedSvg} 
+							/>
+						))
+					}
 				</Accessories>
 
 					<About>{car.about}</About>
