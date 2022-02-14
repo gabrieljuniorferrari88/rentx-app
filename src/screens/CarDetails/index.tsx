@@ -5,6 +5,8 @@ import { BackButton } from '../../components/BackButton'
 import { ImageSlider } from '../../components/ImageSlider';
 import { Button } from '../../components/Button';
 
+import { useNavigation } from '@react-navigation/native';
+
 import SpeedSvg from '../../assets/speed.svg';
 import AccelerationSvg from '../../assets/acceleration.svg';
 import ForceSvg from '../../assets/force.svg';
@@ -30,6 +32,12 @@ import {
 } from './styles';
 
 export function CarDetails(){
+	const navigation = useNavigation();
+
+	function handleConfirmRental() {
+		navigation.navigate('Scheduling');
+	}
+
 	return (
 		<Container>
 			<Header> 
@@ -74,7 +82,7 @@ export function CarDetails(){
 			</Content>
 
 			<Footer>
-				<Button title="Confirmar"/>
+				<Button title="Escolher período do aluguel" onPress={handleConfirmRental} />
 			</Footer>
 
 		</Container>
