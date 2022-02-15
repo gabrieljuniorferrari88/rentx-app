@@ -8,6 +8,7 @@ import { Button } from '../../components/Button';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 import SpeedSvg from '../../assets/speed.svg';
+
 import { CarDTO } from '../../dtos/CarDTO';
 
 import {
@@ -26,6 +27,7 @@ import {
 	Accessories,
 	Footer
 } from './styles';
+import { getAccessoryeIcon } from '../../utils/getAccessoryeIcon';
 
 interface Params {
 	car: CarDTO;
@@ -75,7 +77,7 @@ export function CarDetails(){
 							<Accessory 
 								key={accessory.type}
 								name={accessory.name} 
-								icon={SpeedSvg} 
+								icon={getAccessoryeIcon(accessory.type)} 
 							/>
 						))
 					}
