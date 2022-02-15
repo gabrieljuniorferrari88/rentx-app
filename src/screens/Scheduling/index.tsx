@@ -99,14 +99,14 @@ export function Scheduling(){
 				<RentalPeriod>
 					<DateInfo>
 						<DateTitle>DE</DateTitle>
-						<DateValue selected={false}>{rentalPeriod.startFormatted}</DateValue>
+						<DateValue selected={!!rentalPeriod.startFormatted}>{rentalPeriod.startFormatted}</DateValue>
 					</DateInfo>
 
 					<ArrowSvg />
 
 					<DateInfo>
 						<DateTitle>ATÉ</DateTitle>
-						<DateValue selected={false}>{rentalPeriod.endFormatted}</DateValue>
+						<DateValue selected={!!rentalPeriod.endFormatted}>{rentalPeriod.endFormatted}</DateValue>
 					</DateInfo>
 
 				</RentalPeriod>
