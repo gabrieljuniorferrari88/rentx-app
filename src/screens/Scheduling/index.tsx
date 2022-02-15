@@ -25,10 +25,20 @@ import {
 	Content,
 	Footer,
 } from './styles';
+import { getPlatformDate } from '../../utils/getPlatformDate';
+import { format, parseISO } from 'date-fns';
+
+interface RentalPeriod {
+	start: number;
+	startFormatted: string;
+	end: number;
+	endFormatted: string;
+}
 
 export function Scheduling(){
 	const [ lastSelectDate, setLastSelectDate ] = useState<DayProps>({} as DayProps);
 	const [ markedDates, setMarkedDates ] = useState<CalendarProps>({} as CalendarProps);
+	const [ rentalPeriod, setRentalPeriod ] = useState<RentalPeriod>({} as RentalPeriod);
 
 	const theme = useTheme();
 	const navigation = useNavigation();
@@ -54,6 +64,17 @@ export function Scheduling(){
 		const interval = generateInterval(start, end);
 
 		setMarkedDates(interval);
+
+		const firstDate = Object.keys(interval)[0];
+		const endDate = Object.keys(interval)[Object.keys(interval).length -1];
+
+		setRentalPeriod({
+			start: start.timestamp,
+			end: end.timestamp,
+			startFormatted: format(getPlatformDate(parseISO(firstDate)), 'dd/MM/yyyy'),
+			endFormatted: format(getPlatformDate(parseISO(endDate)), 'dd/MM/yyyy'),
+		})
+
 	}
 
 	return (
@@ -78,21 +99,21 @@ export function Scheduling(){
 				<RentalPeriod>
 					<DateInfo>
 						<DateTitle>DE</DateTitle>
-						<DateValue selected={false}>11/02/2022</DateValue>
+						<DateValue selected={false}>{rentalPeriod.startFormatted}</DateValue>
 					</DateInfo>
 
 					<ArrowSvg />
 
 					<DateInfo>
 						<DateTitle>ATÉ</DateTitle>
-						<DateValue selected={false}>12/02/2022</DateValue>
+						<DateValue selected={false}>{rentalPeriod.endFormatted}</DateValue>
 					</DateInfo>
 
 				</RentalPeriod>
 			</Header>
 
 			<Content>
-				<Calendar
+				<Calendar 	
 					markedDates={markedDates}
 					onDayPress={handleChangeDate}
 				/>
