@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'react-native';
 import { useTheme } from 'styled-components/native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { Button } from '../../components/Button';
 import { BackButton } from '../../components/BackButton';
@@ -27,12 +27,15 @@ import {
 } from './styles';
 import { getPlatformDate } from '../../utils/getPlatformDate';
 import { format, parseISO } from 'date-fns';
+import { CarDTO } from '../../dtos/CarDTO';
 
 interface RentalPeriod {
-	start: number;
 	startFormatted: string;
-	end: number;
 	endFormatted: string;
+}
+
+interface Params {
+	car: CarDTO;
 }
 
 export function Scheduling(){
@@ -42,9 +45,11 @@ export function Scheduling(){
 
 	const theme = useTheme();
 	const navigation = useNavigation();
+	const route = useRoute();
+	const { car } = route.params as Params;
 
 	function handleConfirmRental() {
-		navigation.navigate('SchedulingDetails');
+		navigation.navigate('SchedulingDetails', { car });
 	}
 
 	function handleBack() {
@@ -69,8 +74,6 @@ export function Scheduling(){
 		const endDate = Object.keys(interval)[Object.keys(interval).length -1];
 
 		setRentalPeriod({
-			start: start.timestamp,
-			end: end.timestamp,
 			startFormatted: format(getPlatformDate(parseISO(firstDate)), 'dd/MM/yyyy'),
 			endFormatted: format(getPlatformDate(parseISO(endDate)), 'dd/MM/yyyy'),
 		})
