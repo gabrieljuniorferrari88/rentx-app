@@ -65,3 +65,36 @@ export const CarTest = styled.Text`
 	font-family: ${({theme}) => theme.fonts.primary_500};
 	font-size: ${RFValue(15)}px;
 `;
+
+export const CarWrapper = styled.View`
+	margin-bottom: ${RFValue(16)}px;
+`;
+
+export const CarFooter = styled.View`
+	background-color: ${({theme}) => theme.colors.background_secondary};
+	width: 100%;
+	padding: ${RFValue(12)}px;
+	margin-top: ${RFValue(-10)}px;
+
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+`;
+
+export const CarFooterTitle = styled.Text`
+	color: ${({theme}) => theme.colors.text_detail};
+	font-family: ${({theme}) => theme.fonts.secondary_500};
+	font-size: ${RFValue(10)}px;
+`;
+
+export const CarFooterPeriod = styled.View`
+	width: 60%;
+	flex-direction: row;
+	justify-content: space-between;
+`;
+
+export const CarFooterDate = styled.Text`
+	color: ${({theme}) => theme.colors.title};
+	font-family: ${({theme}) => theme.fonts.primary_400};
+	font-size: ${RFValue(13)}px;
+`;
