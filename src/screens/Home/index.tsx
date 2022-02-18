@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useTheme } from 'styled-components';
 import { StatusBar } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { Ionicons } from '@expo/vector-icons';
 
 import Logo from '../../assets/logo.svg';
 import api from '../../services/api';
@@ -15,7 +17,8 @@ import {
 	Header,
 	HeaderContent,
 	TotalCars,
-	CarList
+	CarList,
+	MyCarsButton
 } from './styles';
 
 export function Home(){
@@ -23,9 +26,15 @@ export function Home(){
 	const [loading, setLoading] = useState(true);
 	const navigation = useNavigation();
 
+	const theme = useTheme();
+
 	function handleCarDetails(car: CarDTO) {
     navigation.navigate('CarDetails', { car });
   }
+
+	function handleOpenMyCars() {
+		navigation.navigate('MyCars');
+	}
 	
 	useEffect(() => {
 		async function fetchCars() {
@@ -50,24 +59,33 @@ export function Home(){
 				backgroundColor='transparent'
 				translucent
 			/>
-				<Header>
-					<HeaderContent>
-						<Logo width={RFValue(108)} height={RFValue(12)}/>
-						<TotalCars>
-							Total de 15 carros
-						</TotalCars>
-					</HeaderContent>					
-				</Header>
+			<Header>
+				<HeaderContent>
+					<Logo width={RFValue(108)} height={RFValue(12)}/>
+					<TotalCars>
+						Total de 15 carros
+					</TotalCars>
+				</HeaderContent>					
+			</Header>
 
-				{ loading ? <Load /> :
-					<CarList 
-						data={cars}
-						keyExtractor={item => String(item.id)} 
-						renderItem={({ item }) => 
-							<Car data={item} onPress={() => handleCarDetails(item)} />
-					}
+			{ loading ? <Load /> :
+				<CarList 
+					data={cars}
+					keyExtractor={item => String(item.id)} 
+					renderItem={({ item }) => 
+						<Car data={item} onPress={() => handleCarDetails(item)} />
+						}
 				/>
 				}
+
+			<MyCarsButton onPress={handleOpenMyCars}>
+				<Ionicons 
+					name="ios-car-sport"
+					size={RFValue(32)}
+					color={theme.colors.shape}
+				/>
+			</MyCarsButton>
+			
 		</Container>
 	);
 }
