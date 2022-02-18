@@ -11,7 +11,7 @@ import { Button } from '../../components/Button';
 
 import { CarDTO } from '../../dtos/CarDTO';
 
-import { getAccessoryeIcon } from '../../utils/getAccessoryeIcon';
+import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 
 import {
 	Container,
@@ -40,6 +40,8 @@ import {
 } from './styles';
 import { format, parseISO } from 'date-fns';
 import { getPlatformDate } from '../../utils/getPlatformDate';
+import api from '../../services/api';
+import { Alert } from 'react-native';
 
 interface Params {
 	car: CarDTO;
@@ -53,6 +55,7 @@ interface RentalPeriod {
 
 export function SchedulingDetails(){
 	const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({} as RentalPeriod);
+	const [loading, setLoading] = useState(false);
 
 	const theme = useTheme();
 	const navigation = useNavigation();
@@ -62,13 +65,28 @@ export function SchedulingDetails(){
 	const rentalTotalDiarias = Number(dates.length);
 	const rentalTotal = Number(rentalTotalDiarias * car.rent.price);
 
-	function handleConfirmRental() {
-		navigation.navigate('SchedulingComplete');
+	async function handleConfirmRental() {
+		const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`);
+    console.log("🚀 ~ file: index.tsx ~ line 70 ~ handleConfirmRental ~ schedulesByCar", schedulesByCar)
+
+		const unavailable_dates = [
+			...schedulesByCar.data.unavailable_dates,
+			...dates,
+		];
+    console.log("🚀 ~ file: index.tsx ~ line 74 ~ handleConfirmRental ~ unavailable_dates", unavailable_dates)
+
+		api.put(`/schedules_bycars/${car.id}`, {
+			id: car.id,
+			unavailable_dates
+		})
+		.then(() => navigation.navigate('SchedulingComplete'))
+		.catch(() => Alert.alert('Não possível confirmar o agendamento!'))
 	}
 
 	function handleBack() {
 		navigation.goBack();
 	}
+
 
 	useEffect(() => {
 		setRentalPeriod({
@@ -108,7 +126,7 @@ export function SchedulingDetails(){
 							<Accessory 
 								key={accessory.type}
 								name={accessory.name} 
-								icon={getAccessoryeIcon(accessory.type)} 
+								icon={getAccessoryIcon(accessory.type)} 
 							/>
 						))
 					}
@@ -153,7 +171,11 @@ export function SchedulingDetails(){
 			</Content>
 
 			<Footer>
-				<Button title="Alugar agora" color={theme.colors.success} onPress={handleConfirmRental} />
+				<Button 
+					title="Alugar agora" 
+					color={theme.colors.success} 
+					onPress={handleConfirmRental}
+				 />
 			</Footer>
 
 		</Container>

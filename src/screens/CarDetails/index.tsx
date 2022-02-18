@@ -27,7 +27,7 @@ import {
 	Accessories,
 	Footer
 } from './styles';
-import { getAccessoryeIcon } from '../../utils/getAccessoryeIcon';
+import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 
 interface Params {
 	car: CarDTO;
@@ -77,7 +77,7 @@ export function CarDetails(){
 							<Accessory 
 								key={accessory.type}
 								name={accessory.name} 
-								icon={getAccessoryeIcon(accessory.type)} 
+								icon={getAccessoryIcon(accessory.type)} 
 							/>
 						))
 					}

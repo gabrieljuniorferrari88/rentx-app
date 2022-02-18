@@ -2,7 +2,7 @@ import React from 'react';
 import { RectButtonProps } from 'react-native-gesture-handler';
 
 import { CarDTO } from '../../dtos/CarDTO';
-import { getAccessoryeIcon } from '../../utils/getAccessoryeIcon';
+import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 
 import {
 	Container,
@@ -22,7 +22,7 @@ interface Props extends RectButtonProps{
 }
 
 export function Car({ data, ...rest }: Props){
-	const MotorIcon = getAccessoryeIcon(data.fuel_type);
+	const MotorIcon = getAccessoryIcon(data.fuel_type);
 	return (
 		<Container {...rest}>
 			<Details>
