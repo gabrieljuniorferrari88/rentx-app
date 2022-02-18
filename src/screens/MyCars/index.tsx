@@ -4,6 +4,7 @@ import { useTheme } from 'styled-components';
 import { useNavigation } from '@react-navigation/native';
 
 import { BackButton } from '../../components/BackButton';
+import { Car } from '../../components/Car';
 import { CarDTO } from '../../dtos/CarDTO';
 import api from '../../services/api';
 
@@ -16,11 +17,17 @@ import {
 	Appointments,
 	AppointmentsTitle,
 	AppointmentsQuantity,
+	CarTest
 } from './styles';
 
+interface CarProps {
+	id: string;
+	user_id: string;
+	car: CarDTO;
+}
 
 export function MyCars(){
-	const [cars, setCars] = useState<CarDTO[]>([]);
+	const [cars, setCars] = useState<CarProps[]>([]);
 	const [loading, setLoading] = useState(true);
 	const theme = useTheme();
 	const navigation = useNavigation();
@@ -72,8 +79,17 @@ export function MyCars(){
 					<AppointmentsTitle>Agendamentos feitos</AppointmentsTitle>
 					<AppointmentsQuantity>05</AppointmentsQuantity>
 				</Appointments>
-			</Content>
 
+				<FlatList 
+					data={cars}
+					keyExtractor={item => item.id}
+					showsHorizontalScrollIndicator={false}
+					renderItem={({ item }) => (
+						<Car data={item.car}/>
+					)}
+				/>
+
+			</Content>
 		</Container>
 	);
 }

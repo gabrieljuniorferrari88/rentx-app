@@ -60,3 +60,8 @@ export const AppointmentsQuantity = styled.Text`
 	font-family: ${({theme}) => theme.fonts.primary_500};
 	font-size: ${RFValue(15)}px;
 `;
+export const CarTest = styled.Text`
+	color: ${({theme}) => theme.colors.title};
+	font-family: ${({theme}) => theme.fonts.primary_500};
+	font-size: ${RFValue(15)}px;
+`;
