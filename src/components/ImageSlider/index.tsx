@@ -22,10 +22,14 @@ export function ImageSlider({ imagesUrl }: Props){
 		<Container>
 			
 			<ImageIndexes>
-				<ImageIndex active={true} />
-				<ImageIndex active={false} />
-				<ImageIndex active={false} />
-				<ImageIndex active={false} />
+				{
+					imagesUrl.map((_, index) => (
+						<ImageIndex 
+							key={String(index)}
+							active={true} 
+						/>
+					))
+				}
 			</ImageIndexes>
 
 			<FlatList
