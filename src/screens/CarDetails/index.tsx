@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, StyleSheet } from 'react-native';
 
 import Animated, {
 	useSharedValue,
@@ -15,6 +15,7 @@ import { ImageSlider } from '../../components/ImageSlider';
 import { Button } from '../../components/Button';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { useTheme } from 'styled-components';
 
 import SpeedSvg from '../../assets/speed.svg';
 
@@ -48,6 +49,9 @@ export function CarDetails(){
 	const route = useRoute();
 	const { car } = route.params as Params;
 
+	const theme = useTheme();
+	const statusBarHeight = getStatusBarHeight();
+
 	const scrollY = useSharedValue(0);
 	const scrollHandler = useAnimatedScrollHandler(event => {
 		scrollY.value = event.contentOffset.y;
@@ -58,11 +62,22 @@ export function CarDetails(){
 			height: interpolate(
 				scrollY.value,
 				[0, 200],
-				[200, 70],
+				[270, statusBarHeight + 50],
 				Extrapolate.CLAMP
 			),
 		}
-	})
+	});
+
+	const sliderCarsStyleAnimation = useAnimatedStyle(() => {
+		return {
+			opacity: interpolate(
+				scrollY.value,
+				[0, 150],
+				[1, 0],
+				Extrapolate.CLAMP
+			),
+		}
+	});
 
 	function handleConfirmRental() {
 		navigation.navigate('Scheduling', { car });
@@ -81,24 +96,32 @@ export function CarDetails(){
 			/>
 
 			<Animated.View
-				style={[headerStyleAnimation]}
+				style={[
+					headerStyleAnimation, 
+					styles.header,
+					{ backgroundColor: theme.colors.background_secondary	}
+				]}
 			>
 				<Header> 
-					<BackButton onPress={handleBack}/>
+					<BackButton onPress={handleBack} />
 				</Header>
 
-				<CarImages>
-					<ImageSlider imagesUrl={car.photos} />
-				</CarImages>
+						<Animated.View style={sliderCarsStyleAnimation}>
+					<CarImages>
+							<ImageSlider imagesUrl={car.photos} />
+					</CarImages>
+						</Animated.View>
+				
 			</Animated.View>
 
 			<Animated.ScrollView
 				contentContainerStyle={{
 					paddingHorizontal: 24,
-					paddingTop: getStatusBarHeight(),
+					paddingTop: getStatusBarHeight() + 190,
 				}}
 				showsVerticalScrollIndicator= {false}
 				onScroll={scrollHandler}
+				scrollEventThrottle={16}
 			>
 				<Details>					
 					<Description>
@@ -142,3 +165,11 @@ export function CarDetails(){
 		</Container>
 	);
 }
+
+const styles = StyleSheet.create({ 
+	header: {
+		position: "absolute",
+		overflow: 'hidden',
+		zIndex: 1,
+	}
+});
