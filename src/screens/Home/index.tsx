@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
-import { StatusBar, StyleSheet } from 'react-native';
+import { BackHandler, StatusBar, StyleSheet } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { Ionicons } from '@expo/vector-icons';
 import { PanGestureHandler, RectButton } from 'react-native-gesture-handler';
@@ -28,7 +28,6 @@ import {
 	HeaderContent,
 	TotalCars,
 	CarList,
-	MyCarsButton
 } from './styles';
 
 export function Home(){
@@ -89,6 +88,14 @@ export function Home(){
 		fetchCars();
 	},[]);
 
+	useFocusEffect(() => {
+		const backHandler = BackHandler.addEventListener(
+				'hardwareBackPress',
+				() => true
+		);
+		return () => backHandler.remove();
+});
+
 	return (
 		<Container>
 			<StatusBar 
@@ -99,9 +106,12 @@ export function Home(){
 			<Header>
 				<HeaderContent>
 					<Logo width={RFValue(108)} height={RFValue(12)}/>
-					<TotalCars>
-						Total de {cars.length} carros
-					</TotalCars>
+					{
+						!loading &&
+						<TotalCars>
+							Total de {cars.length} carros
+						</TotalCars>
+					}
 				</HeaderContent>					
 			</Header>
 
