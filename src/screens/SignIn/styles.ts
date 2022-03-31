@@ -28,4 +28,10 @@ export const SubTitle = styled.Text`
 	margin-top: ${RFValue(16)}px;
 `;
 
+export const Form = styled.View`
+	margin: ${RFValue(64)}px 0;
+
+	flex-direction: column;
+`;
+
 export const Footer = styled.View``;
