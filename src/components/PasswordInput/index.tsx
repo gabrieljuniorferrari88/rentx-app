@@ -51,11 +51,11 @@ export function PasswordInput({
 			</IconContainer>
 
 			<InputText
-				onFocus={handleInputFocus}
-				onBlur={handleInputBlur}
 				isFocused={isFocused}
 				secureTextEntry={isPasswordVisible}
 				{...rest}
+				onFocus={handleInputFocus}
+				onBlur={handleInputBlur}
 			/>
 
 			<BorderlessButton onPress={handlePasswordVisibilityChange}>
